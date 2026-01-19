@@ -2,7 +2,7 @@ var pieces = []
 var rects = []
 var circles = []
 var colors = []
-let stepGrid = 5
+let stepGrid = 10
 const canvasHeight = 600
 const canvasWidth =600
 
@@ -138,7 +138,7 @@ function circleMove(circle){
 }
 
 function createPattern(x,y,size){
-  let rand = int(random(1,4))
+  let rand = int(random(1,5))
   switch (rand) {
     case 1:
       pattern1(x,y,size)
@@ -148,6 +148,9 @@ function createPattern(x,y,size){
       break
     case 3:
       pattern3(x,y,size)
+      break
+    case 4:
+      pattern4(x,y,size)
       break
   }
   // pieces.push(createRect(x,y,size,size))
@@ -175,14 +178,22 @@ function pattern3(x,y,size){
 }
 
 function pattern4(x,y,size){
-  rects.push
+  rects.push(createRect(x,y,size/4,size))
+  rects.push(createRect(x+size/4,y,size/2,size))
+  rects.push(createRect(x+3*size/4,y,size/4,size))
+  rects.push(createRect(x,y,size/4,size))
+  rects.push(createRect(x+size/4,y,size/2,size))
+  rects.push(createRect(x+3*size/4,y,size/4,size))
 }
 
 function generateColors(){
   // colors.push(color(10, 20, 40))
   colors.push(color(255, 0, 110))
-  colors.push(color(131, 56, 236))
+  // colors.push(color(131, 56, 236))
+  colors.push(color(176, 38, 255))
   colors.push(color(255, 190, 11))
+  colors.push(color(random(255),random(255),random(255)))
+  colors.push(color(random(255),random(255),random(255)))
   colors.push(color(random(255),random(255),random(255)))
 }
 
