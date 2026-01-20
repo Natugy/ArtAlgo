@@ -12,8 +12,8 @@ var canvasHeight
 var canvasWidth 
 
 function setup() {
-  canvasHeight = windowHeight * 0.8
-  canvasWidth = canvasHeight
+  canvasWidth = min(windowWidth * 0.8,windowHeight*0.8)
+  canvasHeight = canvasWidth
   w=canvasWidth
   h=canvasHeight
   generateColors()
@@ -42,7 +42,7 @@ function draw() {
 
 function centerCanvas() {
     var x = (windowWidth - w) *0.5;
-    var y = (windowHeight - h) *0.3;
+    var y = (windowHeight - h) *0.2;
     cnv.position(x, y);
 }
 
