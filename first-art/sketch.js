@@ -2,14 +2,29 @@ var pieces = []
 var rects = []
 var circles = []
 var colors = []
-let stepGrid = 10
-const canvasHeight = 600
-const canvasWidth =600
+let stepGrid = 8
+
+var w, h
+var cnv
+var leftmargin, rightmargin, topmargin, bottommargin, actualheight, actualwidth, penwidth
+var resolution, sourcecode
+var canvasHeight 
+var canvasWidth 
 
 function setup() {
+  canvasHeight = windowHeight * 0.8
+  canvasWidth = canvasHeight
+  w=canvasWidth
+  h=canvasHeight
   generateColors()
-  createCanvas(canvasWidth, canvasHeight);
-
+  cnv = createCanvas(canvasWidth, canvasHeight);
+  centerCanvas()
+      leftmargin = Math.floor(w * 0.05)
+    rightmargin = Math.floor(w * 0.95)
+    topmargin = Math.floor(h * 0.05)
+    bottommargin = Math.floor(h * 0.75)
+    actualwidth = rightmargin - leftmargin
+    actualheight = bottommargin - topmargin
   // frameRate(1)
   generateGrid()
   
@@ -23,6 +38,12 @@ function draw() {
   }
 
   
+}
+
+function centerCanvas() {
+    var x = (windowWidth - w) *0.5;
+    var y = (windowHeight - h) *0.3;
+    cnv.position(x, y);
 }
 
 function createRect(x = random(30, 280), y = random(30, 380), width = random(20, 180), height = random(20, 80), alpha = 255) {
@@ -157,23 +178,23 @@ function createPattern(x,y,size){
 }
 
 function pattern1(x,y,size){
-  rects.push(createRect(x,y,size,size))
-  rects.push(createRect(x,y,size,size))
+  // rects.push(createRect(x,y,size,size))
+  // rects.push(createRect(x,y,size,size))
   rects.push(createRect(x,y,size,size))
   circles.push(createcircle(x+size/2,y+size/2,size/2))
 }
 
 function pattern2(x,y,size){
   rects.push(createRect(x,y,size,size))
-  rects.push(createRect(x,y,size,size))
-  rects.push(createRect(x,y,size,size))
-  rects.push(createRect(x,y,size,size))
+  // rects.push(createRect(x,y,size,size))
+  // rects.push(createRect(x,y,size,size))
+  // rects.push(createRect(x,y,size,size))
 }
 
 function pattern3(x,y,size){
   rects.push(createRect(x,y,size,size/2))
-  rects.push(createRect(x,y,size,size/2))
-  rects.push(createRect(x,y+size/2,size,size/2))
+  // rects.push(createRect(x,y,size,size/2))
+  // rects.push(createRect(x,y+size/2,size,size/2))
   rects.push(createRect(x,y+size/2,size,size/2))
 }
 
@@ -181,9 +202,9 @@ function pattern4(x,y,size){
   rects.push(createRect(x,y,size/4,size))
   rects.push(createRect(x+size/4,y,size/2,size))
   rects.push(createRect(x+3*size/4,y,size/4,size))
-  rects.push(createRect(x,y,size/4,size))
-  rects.push(createRect(x+size/4,y,size/2,size))
-  rects.push(createRect(x+3*size/4,y,size/4,size))
+  // rects.push(createRect(x,y,size/4,size))
+  // rects.push(createRect(x+size/4,y,size/2,size))
+  // rects.push(createRect(x+3*size/4,y,size/4,size))
 }
 
 function generateColors(){
