@@ -12,12 +12,13 @@ var canvasHeight
 var canvasWidth 
 
 function setup() {
-  canvasWidth = min(windowWidth * 0.6,windowHeight*0.8)
+  canvasWidth = min(windowWidth * 0.8,windowHeight*0.8)
   canvasHeight = canvasWidth
   w=canvasWidth
   h=canvasHeight
   generateColors()
   cnv = createCanvas(canvasWidth, canvasHeight);
+  cnv.parent(select('.canvas'))
   centerCanvas()
   // frameRate(1)
   generateGrid()
@@ -36,7 +37,7 @@ function draw() {
 
 function centerCanvas() {
     var x = (windowWidth - w) *0.5;
-    var y = (windowHeight - h) *0.2;
+    var y = (windowHeight - h) *0.5;
     cnv.position(x, y);
 }
 
