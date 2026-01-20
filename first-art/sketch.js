@@ -12,19 +12,13 @@ var canvasHeight
 var canvasWidth 
 
 function setup() {
-  canvasWidth = min(windowWidth * 0.8,windowHeight*0.8)
+  canvasWidth = min(windowWidth * 0.6,windowHeight*0.8)
   canvasHeight = canvasWidth
   w=canvasWidth
   h=canvasHeight
   generateColors()
   cnv = createCanvas(canvasWidth, canvasHeight);
   centerCanvas()
-      leftmargin = Math.floor(w * 0.05)
-    rightmargin = Math.floor(w * 0.95)
-    topmargin = Math.floor(h * 0.05)
-    bottommargin = Math.floor(h * 0.75)
-    actualwidth = rightmargin - leftmargin
-    actualheight = bottommargin - topmargin
   // frameRate(1)
   generateGrid()
   
