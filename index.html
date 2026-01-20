@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanguy's Art</title>
+    <title>Portfolio | Tanguy's Art</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Les oeuvres d'art de Tanguy</h1>
-    <ul>
-        <li><a href="./first-art/index.html">Ordre et Chaos</a></li>
-    </ul>
+    <header>
+        <h1>Les œuvres d'art de Tanguy</h1>
+    </header>
+
+    <main>
+        <section class="description">
+            <p>
+                Exploration numérique entre <strong>rigueur algorithmique</strong> et 
+                <strong>imprévisibilité visuelle</strong>. Ce portfolio regroupe mes 
+                expériences créatives développées avec p5.js.
+            </p>
+        </section>
+
+
+        <ul class="art-list">
+            <li>
+                <a href="./first-art/index.html" class="art-link" data-desc="Première pièce inspiré par les œuvres d'art de l'Udem">
+                    <span class="dot"></span> Ordre et Chaos
+                </a>
+            </li>
+        </ul>
+
+        <div id="project-tooltip"></div>
+
+        <script src="script.js"></script>
+    </main>
 </body>
 </html>

@@ -18,7 +18,7 @@ function setup() {
   h=canvasHeight
   generateColors()
   cnv = createCanvas(canvasWidth, canvasHeight);
-  cnv.parent(select('.canvas'))
+  cnv.parent(select('div'))
   centerCanvas()
   // frameRate(1)
   generateGrid()

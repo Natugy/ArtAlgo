@@ -1,0 +1,139 @@
+/* Configuration générale */
+body {
+    background-color: #0a0a0b;
+    color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Titre principal */
+h1 {
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #f0f0f0;
+}
+
+/* Liste des projets */
+.art-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Style des liens */
+.art-link {
+    display: flex;
+    align-items: center;
+    color: #ff006e; /* Ton Rose Néon */
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border: 1px solid transparent;
+    transition: all 0.4s ease;
+}
+
+/* Petit point décoratif devant le lien */
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: #8338ec; /* Ton Violet */
+    border-radius: 50%;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Effets au survol (Hover) */
+.art-link:hover {
+    color: #2ec4b6; /* Un petit vert émeraude pour le contraste */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    padding-left: 30px; /* Petit décalage vers la droite */
+}
+
+.art-link:hover .dot {
+    transform: scale(1.5);
+    background-color: #ff006e;
+}
+
+/* ... (garde ton code précédent et ajoute ceci) ... */
+
+.description {
+    max-width: 500px; /* On limite la largeur pour que ce soit lisible */
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03); /* Un fond très subtil */
+    border-left: 2px solid #8338ec; /* Une ligne violette sur le côté */
+    border-radius: 4px;
+}
+
+.description p {
+    line-height: 1.6;
+    color: #cccccc;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.description strong {
+    color: #ff006e; /* Rappel du rose néon sur les mots importants */
+    font-weight: 500;
+}
+
+/* On ajuste un peu l'espacement du titre */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* On s'assure que le lien est le point de référence pour le positionnement */
+.art-link {
+    position: relative; 
+    display: flex;
+    align-items: center;
+    /* ... tes autres styles (color, transition, etc.) ... */
+}
+
+/* Style de la mini description (cachée par défaut) */
+.project-desc {
+    position: absolute;
+    left: 100%;          /* Se place à droite du nom du projet */
+    margin-left: 20px;
+    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+    font-size: 0.9rem;
+    color: #8338ec;      /* Couleur violette pour rester dans le thème */
+    opacity: 0;          /* Invisible */
+    transform: translateX(-10px); /* Légèrement décalé pour l'animation */
+    transition: all 0.4s ease;
+    pointer-events: none; /* Évite que la bulle gêne le clic */
+    font-style: italic;
+}
+
+/* Affichage au survol du lien */
+.art-link:hover .project-desc {
+    opacity: 1;
+    transform: translateX(0); /* Glisse vers sa position finale */
+}
+
+#project-tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 8px 15px;
+    background: rgba(131, 56, 236, 0.9); /* Ton violet avec un peu d'alpha */
+    color: white;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    pointer-events: none; /* La bulle ne doit pas gêner le survol */
+    opacity: 0;           /* Cachée par défaut */
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
