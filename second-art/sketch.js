@@ -4,6 +4,8 @@
  */
 
 let cols, rows;
+var canvasHeight 
+var canvasWidth 
 let w = 20; // Cell size
 let grid = [];
 let stack = [];
@@ -21,7 +23,11 @@ let solving = false;
 let showingPathEnd = true
 
 function setup() {
-  createCanvas(600, 600);
+  canvasWidth = int(min(windowWidth * 0.8,windowHeight*0.8))
+  canvasWidth = canvasWidth - canvasWidth%w
+  canvasHeight = canvasWidth
+  cnv = createCanvas(canvasWidth, canvasHeight);
+  centerCanvas()
   cols = floor(width / w);
   rows = floor(height / w);
 
@@ -56,6 +62,13 @@ function draw() {
   }
 
   
+}
+
+// Centrer le canvas
+function centerCanvas() {
+    var x = (windowWidth - canvasWidth) *0.5;
+    var y = (windowHeight - canvasHeight) *0.5;
+    cnv.position(x, y);
 }
 
 /** --- PHASE 1: GENERATION --- **/

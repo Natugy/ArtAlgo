@@ -63,8 +63,6 @@ h1 {
     background-color: #ff006e;
 }
 
-/* ... (garde ton code précédent et ajoute ceci) ... */
-
 .description {
     max-width: 500px; /* On limite la largeur pour que ce soit lisible */
     text-align: center;
@@ -100,20 +98,7 @@ h1 {
     /* ... tes autres styles (color, transition, etc.) ... */
 }
 
-/* Style de la mini description (cachée par défaut) */
-.project-desc {
-    position: absolute;
-    left: 100%;          /* Se place à droite du nom du projet */
-    margin-left: 20px;
-    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
-    font-size: 0.9rem;
-    color: #8338ec;      /* Couleur violette pour rester dans le thème */
-    opacity: 0;          /* Invisible */
-    transform: translateX(-10px); /* Légèrement décalé pour l'animation */
-    transition: all 0.4s ease;
-    pointer-events: none; /* Évite que la bulle gêne le clic */
-    font-style: italic;
-}
+
 
 /* Affichage au survol du lien */
 .art-link:hover .project-desc {

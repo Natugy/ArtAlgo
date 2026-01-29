@@ -2,42 +2,29 @@ var pieces = []
 var rects = []
 var circles = []
 var colors = []
-let stepGrid = 8
-var w, h
-var cnv
-var canvasHeight 
-var canvasWidth 
+let stepGrid = 5
+const canvasHeight = 600
+const canvasWidth =600
 
 function setup() {
-  canvasWidth = min(windowWidth * 0.8,windowHeight*0.8)
-  canvasHeight = canvasWidth
-  w=canvasWidth
-  h=canvasHeight
   generateColors()
-  cnv = createCanvas(canvasWidth, canvasHeight);
-  centerCanvas()
-  
+  createCanvas(canvasWidth, canvasHeight);
 
+  // frameRate(1)
   generateGrid()
-  // noLoop()
+  
 }
 function draw() {
   background(color(10, 20, 40));
-  drawCanvas()
+  drawCanvas(pieces)
   if (mouseIsPressed == true){
     moveList(rects)
     moveList(circles)
   }
+
   
 }
-// Centrer le canvas
-function centerCanvas() {
-    var x = (windowWidth - w) *0.5;
-    var y = (windowHeight - h) *0.5;
-    cnv.position(x, y);
-}
 
-// Creation des élements
 function createRect(x = random(30, 280), y = random(30, 380), width = random(20, 180), height = random(20, 80), alpha = 255) {
   let rect = {
     type: "rect",
@@ -76,7 +63,6 @@ function createcircle(x, y, size = random(20, 80)) {
   return circle;
 }
 
-//Dessiner les élements
 function drawcircle(circle) {
   fill(circle.color);
   ellipse(circle.x, circle.y, circle.size);
@@ -100,9 +86,12 @@ function drawForm(form) {
   }
 }
 
-function drawList(piecesList){
-  for (let el of piecesList) {
-    drawForm(el)
+function generateGrid(){
+  let pixStep = canvasWidth/stepGrid
+  for(i =0; i<canvasWidth; i+=pixStep){
+      for(j =0; j<canvasHeight; j+=pixStep){
+          createPattern(i,j,pixStep)
+      }   
   }
 }
 
@@ -113,19 +102,23 @@ function drawCanvas(){
   drawList(circles)
 }
 
-// Générer la grille
-function generateGrid(){
-  let pixStep = canvasWidth/stepGrid
-  for(i =0; i<canvasWidth; i+=pixStep){
-      for(j =0; j<canvasHeight; j+=pixStep){
-          createPattern(i,j,pixStep)
-          // pattern1(i,j,pixStep)
-          // rects.push(createRect(i,j,pixStep,pixStep))
-      }   
+function drawList(piecesList){
+  for (let el of piecesList) {
+    drawForm(el)
   }
 }
 
-// Mouvement des elements
+function moveList(piecesList){
+  for (let el of piecesList) {
+    if (el.type == "rect"){
+      rectMove(el)
+    }
+    if (el.type == "circle"){
+      circleMove(el)
+    }
+  }
+}
+
 function rectMove(rect){
   if(rect.direction ==0){
     rect.x += rect.speed
@@ -144,21 +137,8 @@ function circleMove(circle){
 
 }
 
-function moveList(piecesList){
-  for (let el of piecesList) {
-    if (el.type == "rect"){
-      rectMove(el)
-    }
-    if (el.type == "circle"){
-      circleMove(el)
-    }
-  }
-}
-
-
-// Patternes
 function createPattern(x,y,size){
-  let rand = int(random(1,5))
+  let rand = int(random(1,4))
   switch (rand) {
     case 1:
       pattern1(x,y,size)
@@ -169,16 +149,13 @@ function createPattern(x,y,size){
     case 3:
       pattern3(x,y,size)
       break
-    case 4:
-      pattern4(x,y,size)
-      break
   }
   // pieces.push(createRect(x,y,size,size))
 }
 
 function pattern1(x,y,size){
-  // rects.push(createRect(x,y,size,size))
-  // rects.push(createRect(x,y,size,size))
+  rects.push(createRect(x,y,size,size))
+  rects.push(createRect(x,y,size,size))
   rects.push(createRect(x,y,size,size))
   circles.push(createcircle(x+size/2,y+size/2,size/2))
 }
@@ -192,31 +169,21 @@ function pattern2(x,y,size){
 
 function pattern3(x,y,size){
   rects.push(createRect(x,y,size,size/2))
-  // rects.push(createRect(x,y,size,size/2))
-  // rects.push(createRect(x,y+size/2,size,size/2))
+  rects.push(createRect(x,y,size,size/2))
+  rects.push(createRect(x,y+size/2,size,size/2))
   rects.push(createRect(x,y+size/2,size,size/2))
 }
 
 function pattern4(x,y,size){
-  rects.push(createRect(x,y,size/4,size))
-  rects.push(createRect(x+size/4,y,size/2,size))
-  rects.push(createRect(x+3*size/4,y,size/4,size))
-  rects.push(createRect(x,y,size/4,size))
-  rects.push(createRect(x+size/4,y,size/2,size))
-  rects.push(createRect(x+3*size/4,y,size/4,size))
+  rects.push
 }
 
-
-// Gestion des couleurs
 function generateColors(){
   // colors.push(color(10, 20, 40))
   colors.push(color(255, 0, 110))
   colors.push(color(131, 56, 236))
-  colors.push(color(176, 38, 255))
-  // colors.push(color(255, 190, 11))
+  colors.push(color(255, 190, 11))
   colors.push(color(random(255),random(255),random(255)))
-  // colors.push(color(random(255),random(255),random(255)))
-  // colors.push(color(random(255),random(255),random(255)))
 }
 
 function pickColor(alpha = 250){
