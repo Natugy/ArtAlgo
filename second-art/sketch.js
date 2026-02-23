@@ -1,8 +1,3 @@
-/**
- * Integrated Maze Generator (DFS) & Solver (A*)
- * Built for p5.js
- */
-
 let cols, rows;
 var canvasHeight 
 var canvasWidth 
@@ -38,7 +33,7 @@ function setup() {
     }
   }
   current = grid[0];
-
+  frameRate(30)
 }
 
 function draw() {
@@ -55,7 +50,7 @@ function draw() {
     handleGeneration();
   } else if (solving) {
     handleAStar();
-    // drawSearchSets();
+    drawSearchSets();
   }
   else {
     drawEndLine()
@@ -71,7 +66,6 @@ function centerCanvas() {
     cnv.position(x, y);
 }
 
-/** --- PHASE 1: GENERATION --- **/
 function handleGeneration() {
   current.visited = true;
   current.highlight(color(0, 255, 0, 150));
@@ -86,11 +80,10 @@ function handleGeneration() {
     current = stack.pop();
   } else {
     generating = false;
-    startSolving(); // Transition to Phase 2
+    startSolving();
   }
 }
 
-/** --- PHASE 2: PATHFINDING (A*) --- **/
 function startSolving() {
   startPoint = grid[0];
   endPoint = grid[grid.length - 1];
@@ -98,7 +91,7 @@ function startSolving() {
   openSet.push(startPoint);
   solving = true;
   
-  // Initialize A* properties
+
   for (let cell of grid) {
     cell.f = 0; cell.g = 0; cell.h = 0;
     cell.previous = undefined;
@@ -157,7 +150,7 @@ function handleAStar() {
   }
 }
 
-/** --- HELPER FUNCTIONS --- **/
+
 function index(i, j) {
   if (i < 0 || j < 0 || i > cols - 1 || j > rows - 1) return -1;
   return i + j * cols;
@@ -204,7 +197,7 @@ function drawEndLine(){
   
 }
 
-/** --- CELL CLASS --- **/
+
 class Cell {
   constructor(i, j) {
     this.i = i;
