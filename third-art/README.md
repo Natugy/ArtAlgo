@@ -11,7 +11,6 @@ Les données utilisés pour cette oeuvre viennent d'une api gouvernementale Fran
 Exemple d'endpoint de l'api pour le département Ille-et-Vilaine :
 `https://geo.api.gouv.fr/communes?codeDepartement=35&fields=nom,population&format=json`
 
-
 ## Transposition de la data dans l'oeuvre
 
 Grace à cette api je récupére les informations sur le nom et la population de la ville.
