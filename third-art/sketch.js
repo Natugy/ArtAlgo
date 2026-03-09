@@ -7,10 +7,10 @@ let dummys = [];
 const G = 0.5; // Force de la gravité
 let data;
 let dataLength;
-let limitePop = 10000
+let limitePop = 5000
 
 function preload() {
-  let url = 'https://geo.api.gouv.fr/communes?codeDepartement=35&fields=nom,population&format=json';
+  let url = 'https://geo.api.gouv.fr/communes?codeDepartement=36&fields=nom,population&format=json';
   data = loadJSON(url);
   dataLength = Object.keys(data).length
 }
@@ -213,48 +213,3 @@ class City {
 
 
 
-class Astre {
-  constructor(x, y, pop, nom) {
-    this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D().mult(0.5); // Vitesse initiale aléatoire
-    this.acc = createVector(0, 0);
-    this.nom = nom;
-    this.pop = pop;
-    
-    // On utilise la racine carrée pour que la taille reste esthétique
-    this.mass = sqrt(pop) * 0.5; 
-    this.r = sqrt(pop) * 0.2; 
-  }
-
-  attirer(autre) {
-    let force = p5.Vector.sub(this.pos, autre.pos);
-    let distanceSq = constrain(force.magSq(), 100, 1000); // Évite les forces infinies (collisions)
-    let forceMag = (G * this.mass * autre.mass) / distanceSq;
-    force.setMag(forceMag);
-    autre.acc.add(p5.Vector.div(force, autre.mass));
-  }
-
-  update() {
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
-    this.acc.mult(0); // Reset l'accélération
-    
-    // Rebond sur les bords
-    if (this.pos.x < 0 || this.pos.x > width) this.vel.x *= -1;
-    if (this.pos.y < 0 || this.pos.y > height) this.vel.y *= -1;
-  }
-
-  show() {
-    noStroke();
-    // Couleur basée sur la taille (plus c'est gros, plus c'est brillant)
-    fill(150, 200, 255, 200);
-    ellipse(this.pos.x, this.pos.y, this.r);
-    
-    // Affiche le nom des grandes villes
-    if (this.pop > 20000) {
-      fill(255);
-      textAlign(CENTER);
-      text(this.nom, this.pos.x, this.pos.y + this.r + 10);
-    }
-  }
-}
