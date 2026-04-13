@@ -7,7 +7,7 @@ function setup() {
     h = 800
     cnv = createCanvas(w, h);
     centerCanvas();
-    colorMode(HSB, 360, 100, 100, 250);
+    
     noLoop()
 }
 
@@ -19,7 +19,7 @@ function centerCanvas() {
 
 function draw() {
     background(0,0,0)
-    fill(230,100,100)
+    fill(230,0,0)
     noStroke()
     let noir=false
     let cx=w*0.5
@@ -28,7 +28,7 @@ function draw() {
     let molnar=27
     let pas=29
     for(vera=300;vera>42;vera-=pas){
-        noir?fill(0,0,0):fill(230,100,100)
+        noir?fill(0,0,0):fill(230,0,0)
     quad(cx-vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
         cx+vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
         cx+vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar),

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/black.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<h2>Éloge de l'ordinateur</h2>
+				<p>D'après l'article de <strong>Véra Molnar</strong> (1984)</p>
+				<p><small>Présentation sur l'intégration de l'informatique dans les arts visuels </small></p>
+			</section>
+
+			<section>
+				<section>
+					<h2>Remise en contexte</h2>
+				</section>
+				<section>
+					<h2>Rappel de début de session</h2>
+					<div class="fragment">
+						<img src="veramolnar.jpeg" alt="vera" style="height: 400px;">
+						<p> On aime Véra Molnar ❤️</p>
+
+					</div>
+				</section>
+				<section data-background-iframe="https://www.computerhistory.org/timeline/1984/"
+					data-background-interactive>
+					<div
+						style="position: absolute; width: 40%; right: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.5), 0 5px 25px rgba(0,0,0,0.2); background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px; font-size: 20px; text-align: left;">
+						<p>Voici l'historique de 1984 dans le monde de la tech</p>
+					</div>
+				</section>
+			</section>
+
+
+			<section>
+				<h3>Deux attitudes face à la création</h3>
+				<div style="display: flex;">
+					<div style="flex: 1; border-right: 1px solid #ccc;">
+						<h4>Spiritualiste</h4>
+						<ul>
+							<li class="fragment">Artiste = réceptacle sacré </li>
+							<li class="fragment">Méfiance envers la raison </li>
+							<li class="fragment">L'outil est un écran </li>
+						</ul>
+					</div>
+					<div style="flex: 1;">
+						<h4>Matérialiste</h4>
+						<ul>
+							<li class="fragment">Artiste = chercheur </li>
+							<li class="fragment">Alliance avec la science </li>
+							<li class="fragment">L'outil est une prothèse </li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h3>Le défi de l'image mentale</h3>
+				<ul>
+					<li>La création part d'une vision interne floue.</li>
+					<li><strong>Les limites humaines :</strong> fatigue, manque de temps, incohérences.</li>
+					<li><strong>Le "replâtrage" :</strong> l'obligation de camoufler les erreurs en fin de travail.</li>
+				</ul>
+			</section>
+
+			<section>
+				<section>
+					<h3>L'ordinateur : "Machine à mieux voir"</h3>
+					<blockquote>"L'ordinateur ne sait ni rêver ni imaginer ni inventer." </blockquote>
+					<p>Mais il permet de passer du flou subjectif au "sharp focus".</p>
+				</section>
+				<section>
+					<h4>Ses rôles clés :</h4>
+					<ul>
+						<li><strong>Contrôle :</strong> Gestion de milliers de points quantifiés.</li>
+						<li><strong>Mémoire :</strong> Possibilité de revenir sur chaque étape.</li>
+						<li><strong>Fidélité :</strong> Matérialiser ce qu'il y a de plus profond en soi.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Le dialogue Homme-Machine en pratique</h3>
+					<div style="display: flex; align-items: flex-start; gap: 20px;">
+
+						<div style="flex: 1; font-size: 0.75em;">
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|21">
+								
+								var w, h
+								var cnv
+
+								function setup() {
+									w = 800
+									h = 800
+									cnv = createCanvas(w, h);
+									centerCanvas();
+									colorMode(HSB, 360, 100, 100, 250);
+									noLoop()
+								}
+
+								function centerCanvas() {
+									var x = (windowWidth - 800) / 2;
+									var y = (windowHeight - 800) / 2;
+									cnv.position(x, y);
+								}
+
+								function draw() {
+									background(0,0,0)
+									fill(230,100,100) // couleur bleu
+									noStroke()
+									let noir=false
+									let cx=w*0.5
+									let cy=h*0.5
+									let vera=random(42,300)
+									let molnar=27
+									let pas=29
+									for(vera=300;vera>42;vera-=pas){
+										noir?fill(0,0,0):fill(230,100,100)
+									quad(cx-vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar),
+										cx-vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar)
+									)
+									noir=!noir
+								}
+								}
+
+            				</code></pre>
+							<p><small>L'artiste définit les <strong>règles</strong> et l'ordinateur gère les
+									<strong>milliers de points</strong>.</small></p>
+						</div>
+
+						<div style="flex: 1; text-align: center;">
+							<div
+								style="width: 100%; height: 450px; border: 1px solid #555; overflow: hidden; background: #000;">
+								<iframe src="https://natugy.github.io/ArtAlgo/demo-molnar/index.html" width="100%" height="100%" style="border:none;"
+									title="Oeuvre générée p5.js">
+								</iframe>
+							</div>
+							<p><small>Résultat en temps réel : Une "image puissance image"[cite: 128].</small></p>
+						</div>
+
+					</div>
+				</section>
+				<section>
+					<h3>Le dialogue Homme-Machine en pratique</h3>
+					<div style="display: flex; align-items: flex-start; gap: 20px;">
+
+						<div style="flex: 1; font-size: 0.75em;">
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="|21">
+								
+								var w, h
+								var cnv
+
+								function setup() {
+									w = 800
+									h = 800
+									cnv = createCanvas(w, h);
+									centerCanvas();
+									colorMode(HSB, 360, 100, 100, 250);
+									noLoop()
+								}
+
+								function centerCanvas() {
+									var x = (windowWidth - 800) / 2;
+									var y = (windowHeight - 800) / 2;
+									cnv.position(x, y);
+								}
+
+								function draw() {
+									background(0,0,0)
+									fill(230,100,100) // couleur bleu
+									noStroke()
+									let noir=false
+									let cx=w*0.5
+									let cy=h*0.5
+									let vera=random(42,300)
+									let molnar=27
+									let pas=29
+									for(vera=300;vera>42;vera-=pas){
+										noir?fill(0,0,0):fill(230,100,100)
+									quad(cx-vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar),
+										cx-vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar)
+									)
+									noir=!noir
+								}
+								}
+
+            				</code></pre>
+							<p><small>L'artiste définit les <strong>règles</strong> et l'ordinateur gère les
+									<strong>milliers de points</strong>.</small></p>
+						</div>
+
+						<div style="flex: 1; text-align: center;">
+							<div
+								style="width: 100%; height: 450px; border: 1px solid #555; overflow: hidden; background: #000;">
+								<iframe src="https://natugy.github.io/ArtAlgo/demo-molnar/index.html" width="100%" height="100%" style="border:none;"
+									title="Oeuvre générée p5.js">
+								</iframe>
+							</div>
+							<p><small>Résultat en temps réel : Une "image puissance image"[cite: 128].</small></p>
+						</div>
+
+					</div>
+				</section>
+				<section>
+					<h3>Le dialogue Homme-Machine en pratique</h3>
+					<div style="display: flex; align-items: flex-start; gap: 20px;">
+
+						<div style="flex: 1; font-size: 0.75em;">
+							<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers="20">
+								
+								var w, h
+								var cnv
+
+								function setup() {
+									w = 800
+									h = 800
+									cnv = createCanvas(w, h);
+									centerCanvas();
+									noLoop()
+								}
+
+								function centerCanvas() {
+									var x = (windowWidth - 800) / 2;
+									var y = (windowHeight - 800) / 2;
+									cnv.position(x, y);
+								}
+
+								function draw() {
+									background(0,0,0)
+									fill(230,0,0) // couleur rouge
+									noStroke()
+									let noir=false
+									let cx=w*0.5
+									let cy=h*0.5
+									let vera=random(42,300)
+									let molnar=27
+									let pas=29
+									for(vera=300;vera>42;vera-=pas){
+										noir?fill(0,0,0):fill(230,0,0)
+									quad(cx-vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy-vera+random(-molnar,molnar),
+										cx+vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar),
+										cx-vera+random(-molnar,molnar),cy+vera+random(-molnar,molnar)
+									)
+									noir=!noir
+								}
+								}
+
+            				</code></pre>
+							<p><small>L'artiste définit les <strong>règles</strong> et l'ordinateur gère les
+									<strong>milliers de points</strong>.</small></p>
+						</div>
+
+						<div style="flex: 1; text-align: center;">
+							<div
+								style="width: 100%; height: 450px; border: 1px solid #555; overflow: hidden; background: #000;">
+								<iframe src="https://natugy.github.io/ArtAlgo/demo-molnar/test2.html" width="100%" height="100%" style="border:none;"
+									title="Oeuvre générée p5.js">
+								</iframe>
+							</div>
+							<p><small>Résultat en temps réel : Une "image puissance image".</small></p>
+						</div>
+
+					</div>
+				</section>
+			</section>
+
+			<section>
+				<h3>L'exploration du possible</h3>
+				<ul>
+					<li>Simulation de l'intuition par le hasard[cite: 113].</li>
+					<li>Le <strong>Feed-back visuel :</strong> L'ordinateur donne un "coup de fouet" à l'imagination.
+					</li>
+					<li>Audace : Aller au-delà des préjugés culturels[cite: 121, 127].</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Vers une science de l'art</h3>
+				<ul>
+					<li>Réunir la <strong>micro-esthétique</strong> (création) et la <strong>macro-esthétique</strong> .
+					</li>
+					<li>La recherche systématique dérange le milieu de l'art lucratif.</li>
+					<li><strong>"La science de l'art est déjà née."</strong> </li>
+				</ul>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.configure({ showNotes: 'separate-page' });
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
